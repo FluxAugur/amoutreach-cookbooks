@@ -1,1 +1,1 @@
-default[:www][:dbtable] = 'users'
+default[:www-prelaunch][:dbtable] = 'users'
