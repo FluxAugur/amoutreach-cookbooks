@@ -1,6 +1,6 @@
 node[:deploy].each do |app_name, deploy|
 
-  template "#{deploy[:deploy_to]}/current/db-connect.rb" do
+  template "#{deploy[:deploy_to]}/current/db-connect.html.erb" do
     source "db-connect.rb"
     mode 0660
     group deploy[:group]
