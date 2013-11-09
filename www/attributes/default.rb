@@ -1,0 +1,1 @@
+default[:www][:dbtable] = 'users'

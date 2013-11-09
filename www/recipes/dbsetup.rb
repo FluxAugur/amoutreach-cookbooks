@@ -1,6 +1,6 @@
 node[:deploy].each do |app_name, deploy|
   execute "mysql-create-table" do
-    command "/usr/bin/mysql -u#{deploy[:database][:username]} -p#{deploy[:database][:password]} #{deploy[:database][:database]} -e'CREATE TABLE #{node[:www-prelaunch][:dbtable]} (
+    command "/usr/bin/mysql -u#{deploy[:database][:username]} -p#{deploy[:database][:password]} #{deploy[:database][:database]} -e'CREATE TABLE #{node[:www][:dbtable]} (
       id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
       email VARCHAR(255) NOT NULL UNIQUE,
       encrypted_password VARCHAR(255) NOT NULL,
@@ -21,7 +21,7 @@ node[:deploy].each do |app_name, deploy|
       unconfirmed_email VARCHAR(255),
       PRIMARY KEY (id)
     )'"
-    not_if "/usr/bin/mysql -u#{deploy[:database][:username]} -p#{deploy[:database][:password]} #{deploy[:database][:database]} -e'SHOW TABLES' | grep #{node[:www-prelaunch][:dbtable]}"
+    not_if "/usr/bin/mysql -u#{deploy[:database][:username]} -p#{deploy[:database][:password]} #{deploy[:database][:database]} -e'SHOW TABLES' | grep #{node[:www][:dbtable]}"
     action :run
   end
 end
