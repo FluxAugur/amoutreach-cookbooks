@@ -8,15 +8,15 @@ node[:deploy].each do |app_name, deploy|
     if platform?("ubuntu")
       owner "www-data"
     elsif platform?("amazon")
-      owner "apache" # Change to nginx/unicorn?
+      owner "unicorn" # Change to nginx/unicorn?
     end
 
     variables(
-      host: (deploy[:database][:host] rescue nil),
-      user: (deploy[:database][:username] rescue nil),
-      password: (deploy[:database][:password] rescue nil),
-      db: (deploy[:database][:database] rescue nil),
-      table: (node[:www][:dbtable] rescue nil)
+      :host => (deploy[:database][:host] rescue nil),
+      :user => (deploy[:database][:username] rescue nil),
+      :password => (deploy[:database][:password] rescue nil),
+      :db => (deploy[:database][:database] rescue nil),
+      :table => (node[:www][:dbtable] rescue nil)
     )
 
     only_if do
