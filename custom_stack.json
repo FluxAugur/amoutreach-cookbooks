@@ -1,0 +1,15 @@
+{
+  "deploy" : {
+    "www" : {
+      "database" : {
+        "adapter" : "mysql2",
+        "database" : "www_production",
+        "host" : "www-db-master1",
+        "password" : "!nimdAubbaB?",
+        "port" : 3306,
+        "reconnect" : true,
+        "username" : "root"
+      }
+    }
+  }
+}
